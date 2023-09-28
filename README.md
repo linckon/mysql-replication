@@ -1,8 +1,8 @@
 # Setting Up MySQL Replication: Master-Slave Configuration
 
-## Configuring the master
+### Configuring the master
 
-### Creating users and granting privileges
+#### Creating users and granting privileges
 
 ```bash
 CREATE USER 'repl'@'%' IDENTIFIED BY 'password';
@@ -11,7 +11,7 @@ FLUSH PRIVILEGES;
 FLUSH TABLES WITH READ LOCK;
 ```
 
-### Getting the master status
+#### Getting the master status
 
 ```bash
 SHOW MASTER STATUS;
@@ -28,7 +28,7 @@ The result should look like this:
 1 row in set (0.00 sec)
 ```
 
-## Configuring the slave
+### Configuring the slave
 
 ```bash
 CHANGE MASTER TO MASTER_HOST='[master_ip]', MASTER_USER='repl', MASTER_PASSWORD='password', MASTER_LOG_FILE='[log_file_from_master]', MASTER_LOG_POS=[log_position_from_master];
@@ -41,7 +41,9 @@ CHANGE MASTER TO MASTER_HOST='master', MASTER_USER='repl', MASTER_PASSWORD='pass
 START SLAVE;
 ```
 
-### Testing the replication
+Note: we used master as the hostname because we are using docker-compose and the containers are on the same network.
+
+#### Testing the replication
 
 Create a new table on the master:
 
