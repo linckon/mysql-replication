@@ -34,7 +34,7 @@ The result should look like this:
 CHANGE MASTER TO MASTER_HOST='[master_ip]', MASTER_USER='repl', MASTER_PASSWORD='password', MASTER_LOG_FILE='[log_file_from_master]', MASTER_LOG_POS=[log_position_from_master];
 ```
 
-In this example, the master IP is `master`, the log file is `binlog.000002` and the log position is `1151`.
+In this example, the host name of master is `master` (name of the docker container) which will be automatically resolved to master's IP, the log file is `binlog.000002` and the log position is `1151`.
 
 ```bash
 CHANGE MASTER TO MASTER_HOST='master', MASTER_USER='repl', MASTER_PASSWORD='password', MASTER_LOG_FILE='binlog.000002', MASTER_LOG_POS=1151;
