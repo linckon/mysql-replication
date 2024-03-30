@@ -8,7 +8,6 @@
 CREATE USER 'repl'@'%' IDENTIFIED BY 'password';
 GRANT REPLICATION SLAVE ON *.* TO 'repl'@'%';
 FLUSH PRIVILEGES;
-FLUSH TABLES WITH READ LOCK;
 ```
 
 #### Getting the master status
